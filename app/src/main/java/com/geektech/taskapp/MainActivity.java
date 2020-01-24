@@ -69,7 +69,7 @@ public class MainActivity extends AppCompatActivity {
     protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
 
-        if (requestCode == 55 && requestCode == RESULT_OK){
+        if (requestCode == 55 && resultCode == RESULT_OK){
             String text = data.getStringExtra("title");
             String desc = data.getStringExtra("description");
 
