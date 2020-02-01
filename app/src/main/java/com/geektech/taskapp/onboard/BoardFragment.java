@@ -43,18 +43,20 @@ public class BoardFragment extends Fragment {
         switch (pos){
             case 0:
                 textView.setText("Hello");
-                imageView.setImageResource(R.drawable.pic_one);
+                imageView.setImageResource(R.drawable.image1);
                 break;
             case 1:
                 textView.setText("Welcome");
-                imageView.setImageResource(R.drawable.pic_two);
+                imageView.setImageResource(R.drawable.image2);
                 break;
             case 2:
                 textView.setText("How are you?");
-                imageView.setImageResource(R.drawable.pic_three);
+                imageView.setImageResource(R.drawable.image3);
 
                 break;
         }
+
+
 
     }
 }

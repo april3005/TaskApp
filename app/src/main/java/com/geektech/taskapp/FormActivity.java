@@ -26,7 +26,7 @@ private EditText editDesc;
 
         String title = editText.getText().toString().trim();
         String desc = editDesc.getText().toString().trim();
-        if (title == null && desc == null ) {
+        if (editText.getText().toString().equals("") && editDesc.getText().toString().equals("") ) {
             Toast toast = Toast.makeText(getApplicationContext(),
                     "Please insert your text!",
                     Toast.LENGTH_LONG);
