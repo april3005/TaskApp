@@ -12,9 +12,9 @@ import java.util.List;
 
 public class TaskAdapter extends RecyclerView.Adapter <TaskAdapter.ViewHolder> {
 
-    List<String> list;
+    List<Task> list;
 
-    public TaskAdapter(List<String> list) {
+    public TaskAdapter(List<Task> list) {
         this.list = list;
     }
 
@@ -39,15 +39,20 @@ public class TaskAdapter extends RecyclerView.Adapter <TaskAdapter.ViewHolder> {
     public class ViewHolder extends RecyclerView.ViewHolder{
 
         private TextView textTitle;
+        private TextView textDesc;
 
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
 
             textTitle = itemView.findViewById(R.id.textTitle);
+            textDesc = itemView.findViewById(R.id.textDesc);
         }
 
-        public void bind(String s) {
-            textTitle.setText(s);
+        public void bind(Task task) {
+            textTitle.setText(task.getTitle());
+            textDesc.setText(task.getDesc());
+
+
 
         }
     }

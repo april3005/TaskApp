@@ -4,9 +4,11 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.Gravity;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.Toast;
 
 public class FormActivity extends AppCompatActivity {
 private EditText editText;
@@ -20,16 +22,24 @@ private EditText editDesc;
         editDesc = findViewById(R.id.editDesc);
     }
 
-
-
     public void onSaveClick(View view) {
 
-        String text = editText.getText().toString().trim();
+        String title = editText.getText().toString().trim();
         String desc = editDesc.getText().toString().trim();
-        Intent i = new Intent();
-        i.putExtra("title", text);
-        i.putExtra("description", desc);
-        setResult(RESULT_OK, i);
-        finish();
+        if (title == null && desc == null ) {
+            Toast toast = Toast.makeText(getApplicationContext(),
+                    "Please insert your text!",
+                    Toast.LENGTH_LONG);
+            toast.setGravity(Gravity.CENTER, 0, 0);
+            toast.show();
+        }else{
+            Intent i = new Intent();
+            Task task = new Task(title, desc);
+            i.putExtra("task", task);
+            setResult(RESULT_OK, i);
+            finish();
+        }
     }
+
+
 }
