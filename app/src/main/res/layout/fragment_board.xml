@@ -5,7 +5,8 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     android:gravity="center_horizontal"
-    tools:context=".onboard.BoardFragment">
+    tools:context=".onboard.BoardFragment"
+    android:id="@+id/background">
 
     <ImageView
         android:id="@+id/imageView"
@@ -25,4 +26,9 @@
         android:layout_height="wrap_content"
         android:text="Start"/>
 
+
+
+
 </LinearLayout>
+
+

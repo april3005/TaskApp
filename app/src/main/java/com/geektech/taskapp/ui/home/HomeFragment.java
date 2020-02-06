@@ -6,19 +6,18 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.TextView;
-import androidx.annotation.Nullable;
+import android.widget.Toast;
+
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
-import androidx.lifecycle.Observer;
-import androidx.lifecycle.ViewModelProviders;
 import androidx.recyclerview.widget.DividerItemDecoration;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.geektech.taskapp.App;
+import com.geektech.taskapp.OnItemClickListener;
 import com.geektech.taskapp.R;
 import com.geektech.taskapp.Task;
-import com.geektech.taskapp.TaskAdapter;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -31,6 +30,7 @@ public class HomeFragment extends Fragment {
     public View onCreateView(@NonNull LayoutInflater inflater,
             ViewGroup container, Bundle savedInstanceState) {
         View root = inflater.inflate(R.layout.fragment_home, container, false);
+        list = App.getDatabase().taskDao().getAll();
         RecyclerView recyclerView = root.findViewById(R.id.recyclerView);
         recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
         recyclerView.addItemDecoration(new DividerItemDecoration(getContext(), DividerItemDecoration.VERTICAL));
@@ -44,6 +44,13 @@ public class HomeFragment extends Fragment {
 
         adapter = new TaskAdapter(list);
         recyclerView.setAdapter(adapter);
+        adapter.setOnItemClickListener(new OnItemClickListener() {
+            @Override
+            public void onItemClick(int position) {
+                Toast.makeText(getContext(), list.get(position).getTitle(), Toast.LENGTH_SHORT).show();
+
+            }
+        });
         return root;
     }
 

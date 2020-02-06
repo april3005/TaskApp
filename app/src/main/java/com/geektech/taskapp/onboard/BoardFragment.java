@@ -15,6 +15,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.geektech.taskapp.MainActivity;
@@ -41,26 +42,32 @@ public class BoardFragment extends Fragment {
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
+
         TextView textView = view.findViewById(R.id.textView);
         int pos = getArguments().getInt("pos");
         ImageView imageView = view.findViewById(R.id.imageView);
         Button button = view.findViewById(R.id.start);
+        LinearLayout background = view.findViewById(R.id.background);
 
         switch (pos){
             case 0:
                 textView.setText("Hello");
                 imageView.setImageResource(R.drawable.image1);
                 button.setVisibility(View.INVISIBLE);
+                background.setBackgroundColor(getResources().getColor(R.color.colorFirstPage));
                 break;
             case 1:
                 textView.setText("Welcome");
                 imageView.setImageResource(R.drawable.image2);
                 button.setVisibility(View.INVISIBLE);
+                background.setBackgroundColor(getResources().getColor(R.color.colorSecondPage));
                 break;
             case 2:
                 textView.setText("How are you?");
                 imageView.setImageResource(R.drawable.image3);
                 button.setVisibility(View.VISIBLE);
+                background.setBackgroundColor(getResources().getColor(R.color.colorThirdPage));
+
                 break;
         }
 

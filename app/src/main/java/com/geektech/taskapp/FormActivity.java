@@ -36,6 +36,7 @@ private EditText editDesc;
         }else{
             Intent i = new Intent();
             Task task = new Task(title, desc);
+            App.getDatabase().taskDao().insert(task);
             i.putExtra("task", task);
             setResult(RESULT_OK, i);
             finish();

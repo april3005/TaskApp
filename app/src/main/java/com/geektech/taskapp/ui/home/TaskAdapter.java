@@ -1,4 +1,4 @@
-package com.geektech.taskapp;
+package com.geektech.taskapp.ui.home;
 
 import android.view.LayoutInflater;
 import android.view.View;
@@ -8,9 +8,14 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.geektech.taskapp.OnItemClickListener;
+import com.geektech.taskapp.R;
+import com.geektech.taskapp.Task;
+
 import java.util.List;
 
 public class TaskAdapter extends RecyclerView.Adapter <TaskAdapter.ViewHolder> {
+    private OnItemClickListener onItemClickListener;
 
     List<Task> list;
 
@@ -36,6 +41,10 @@ public class TaskAdapter extends RecyclerView.Adapter <TaskAdapter.ViewHolder> {
         return list.size();
     }
 
+    public void setOnItemClickListener(OnItemClickListener onItemClickListener) {
+        this.onItemClickListener = onItemClickListener;
+    }
+
     public class ViewHolder extends RecyclerView.ViewHolder{
 
         private TextView textTitle;
@@ -46,6 +55,12 @@ public class TaskAdapter extends RecyclerView.Adapter <TaskAdapter.ViewHolder> {
 
             textTitle = itemView.findViewById(R.id.textTitle);
             textDesc = itemView.findViewById(R.id.textDesc);
+            itemView.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    onItemClickListener.onItemClick(getAdapterPosition());
+                }
+            });
         }
 
         public void bind(Task task) {
