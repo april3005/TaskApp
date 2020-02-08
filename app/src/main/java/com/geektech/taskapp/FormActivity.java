@@ -14,6 +14,7 @@ import android.widget.Toast;
 public class FormActivity extends AppCompatActivity {
 private EditText editText;
 private EditText editDesc;
+private Task mtask;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -21,6 +22,16 @@ private EditText editDesc;
         setContentView(R.layout.activity_form);
         editText = findViewById(R.id.editText);
         editDesc = findViewById(R.id.editDesc);
+        edit();
+    }
+
+    public void edit() {
+
+        mtask = (Task) getIntent().getSerializableExtra("Task");
+        if (mtask != null) {
+            editText.setText(mtask.getTitle());
+            editDesc.setText(mtask.getDesc());
+        }
     }
 
     public void onSaveClick(View view) {
@@ -34,13 +45,17 @@ private EditText editDesc;
             toast.setGravity(Gravity.CENTER, 0, 0);
             toast.show();
         }else{
-            Intent i = new Intent();
-            Task task = new Task(title, desc);
-            App.getDatabase().taskDao().insert(task);
-            i.putExtra("task", task);
-            setResult(RESULT_OK, i);
-            finish();
+            mtask = new Task(title, desc);
+            App.getDatabase().taskDao().insert(mtask);
+
         }
+
+        if (mtask != null) {
+            mtask.setTitle(title);
+            mtask.setDesc(desc);
+            App.getDatabase().taskDao().update(mtask);
+        }
+        finish();
     }
 
    // if (title.isEmpty || desc.isEmpty){ // для Стринг типа

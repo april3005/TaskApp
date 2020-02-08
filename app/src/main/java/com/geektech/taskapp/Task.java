@@ -16,6 +16,9 @@ public class Task implements Serializable {
         this.title = title;
         this.desc = desc;
     }
+    public Task() {
+    }
+
 
     public long getId() {
         return id;
