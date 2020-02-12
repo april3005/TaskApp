@@ -11,20 +11,30 @@
 
     <EditText
         android:id="@+id/editText"
+        style="@style/EditTextStyle"
         android:layout_width="match_parent"
         android:inputType="textCapCharacters"
         android:layout_height="wrap_content"/>
 
     <EditText
         android:id="@+id/editDesc"
+        style="@style/EditTextStyle"
         android:layout_width="match_parent"
         android:inputType="textCapCharacters"
-        android:layout_height="wrap_content"/>
+        android:layout_height="wrap_content"
+        android:hint="Описание"
+
+        />
 
     <Button
         android:id="@+id/btn_save"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_gravity="center"
         android:onClick="onSaveClick"
-        android:text="SAVE"/>
+        android:text="SAVE"
+        android:textColor="#fff"
+        android:background="@drawable/bg_button"/>
+
+
 </LinearLayout>

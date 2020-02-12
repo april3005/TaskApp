@@ -39,21 +39,15 @@ private Task mtask;
         String title = editText.getText().toString().trim();
         String desc = editDesc.getText().toString().trim();
         if (editText.getText().toString().equals("") && editDesc.getText().toString().equals("") ) {
-            Toast toast = Toast.makeText(getApplicationContext(),
-                    "Please insert your text!",
-                    Toast.LENGTH_LONG);
-            toast.setGravity(Gravity.CENTER, 0, 0);
-            toast.show();
-        }else{
-            mtask = new Task(title, desc);
-            App.getDatabase().taskDao().insert(mtask);
-
-        }
-
-        if (mtask != null) {
+            editText.setError("Insert title!");
+            Toaster.show("Please insert your text!");
+        }else if (mtask != null) {
             mtask.setTitle(title);
             mtask.setDesc(desc);
             App.getDatabase().taskDao().update(mtask);
+        }else {
+            mtask = new Task(title, desc);
+            App.getDatabase().taskDao().insert(mtask);
         }
         finish();
     }

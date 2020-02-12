@@ -54,20 +54,19 @@ public class BoardFragment extends Fragment {
                 textView.setText("Hello");
                 imageView.setImageResource(R.drawable.image1);
                 button.setVisibility(View.INVISIBLE);
-                background.setBackgroundColor(getResources().getColor(R.color.colorFirstPage));
+                background.setBackground(getResources().getDrawable(R.drawable.bg_onboard_one));
                 break;
             case 1:
                 textView.setText("Welcome");
                 imageView.setImageResource(R.drawable.image2);
                 button.setVisibility(View.INVISIBLE);
-                background.setBackgroundColor(getResources().getColor(R.color.colorSecondPage));
+                background.setBackground(getResources().getDrawable(R.drawable.bg_onboard_two));
                 break;
             case 2:
                 textView.setText("How are you?");
                 imageView.setImageResource(R.drawable.image3);
                 button.setVisibility(View.VISIBLE);
-                background.setBackgroundColor(getResources().getColor(R.color.colorThirdPage));
-
+                background.setBackground(getResources().getDrawable(R.drawable.bg_onboard_three));
                 break;
         }
 

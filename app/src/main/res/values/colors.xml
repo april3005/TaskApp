@@ -1,5 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
+
+    <color name="colorPrimary">#923DAA</color>
+    <color name="colorPrimaryDark">#421370</color>
+    <color name="colorAccent">#D81B60</color>
+
     <color name="colorFirstPage">#A9CA54BE</color>
     <color name="colorSecondPage">#C63ACE</color>
     <color name="colorThirdPage">#DAF07EEA</color>
