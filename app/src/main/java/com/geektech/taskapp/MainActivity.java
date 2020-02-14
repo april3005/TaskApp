@@ -121,4 +121,8 @@ public class MainActivity extends AppCompatActivity {
         }
 
 
+    public void onNavigationHeaderClick(View view) {
+        Intent intent = new Intent(this, ProfileActivity.class);
+        startActivity(intent);
     }
+}
